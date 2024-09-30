@@ -1,0 +1,20 @@
+{
+  "books": [
+    {
+      "id": "b874",
+      "title": "fafaw",
+      "author": "fafaf",
+      "genre": "fafa",
+      "price": 20,
+      "stock": 1
+    },
+    {
+      "id": "7272",
+      "title": "zad",
+      "author": "add",
+      "genre": "adda",
+      "price": 6,
+      "stock": 2
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <h2>{{ isEditMode ? 'Edit Book' : 'Add New Book' }}</h2>
+
+    <form [formGroup]="bookForm" (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+
+        <input id="title" class="form-control" formControlName="title" placeholder="Enter a book title" />
+
+        <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched" class="text-danger">
+            title is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="author">Author</label>
+
+        <input id="author" class="form-control" formControlName="author" placeholder="Enter a book author" />
+
+        <div *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched" class="text-danger">
+            author is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="genre">Genre</label>
+
+        <input id="genre" class="form-control" formControlName="genre" placeholder="Enter a book genre" />
+
+        <div *ngIf="bookForm.get('genre')?.invalid && bookForm.get('genre')?.touched" class="text-danger">
+            genre is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price ($)</label>
+
+        <input id="price" class="form-control" type="number" formControlName="price" placeholder="Enter a book price" />
+
+        <div *ngIf="bookForm.get('price')?.invalid && bookForm.get('price')?.touched" class="text-danger">
+            price must be greater than zero
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="stock">Stock</label>
+
+        <input id="stock" class="form-control" type="number" formControlName="stock" placeholder="Enter a stock quantity" />
+
+        <div *ngIf="bookForm.get('stock')?.invalid && bookForm.get('stock')?.touched" class="text-danger">
+            stock must be greater than zero
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">
+        {{ isEditMode ? 'Save Chnages' : 'Add Book' }}
+    </button>
+
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+    </form>
+</div>

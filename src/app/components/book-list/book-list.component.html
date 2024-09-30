@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h2>Book List</h2>
+
+    <div *ngIf="isLoading">
+        <p>Loading books....</p>
+    </div>
+
+    <div *ngIf="errorMessage">
+        <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+
+    <table *ngIf="!isLoading && filteredBooks.length > 0" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let book of filteredBooks">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>${{ book.price }}</td>
+            <td>{{ book.stock }}</td>
+            <td>
+                <button class="btn btn-info btn-sm" (click)="viewDetails(book.id)">Details</button>
+                <button class="btn btn-warning btn-sm" (click)="editBook(book.id)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
+            </td>
+        </tbody>
+    </table>
+
+    <p *ngIf="!isLoading && filteredBooks.length === 0">No books available</p>
+
+    <button class="btn btn-success mt-3" routerLink='/add'>Add new book</button>
+</div>
